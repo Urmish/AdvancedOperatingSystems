@@ -1,0 +1,1 @@
+1) modified_mmapbench - Reads 1 byte from each page of a huge file. Input is a huge file that can exist in ext4/pmfs/tmpfs. mmap options are default
