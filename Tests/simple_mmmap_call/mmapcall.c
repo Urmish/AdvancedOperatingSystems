@@ -75,7 +75,7 @@ main(int argc, char **argv)
       fd = open(filename, O_RDONLY);
 
       start = read_tsc();
-      shared_area = mmap(0, (1 + nbufs) * 4096, PROT_READ, MAP_PRIVATE, fd, 0);
+      shared_area = mmap(0, (1 + nbufs) * 4096, PROT_READ, MMAP_FLAG, fd, 0);
       end = read_tsc();
 
       measurements[i] = end - start;

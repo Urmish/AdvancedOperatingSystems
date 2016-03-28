@@ -1,29 +1,43 @@
 #!/usr/bin/python
 
-import os, re
+import os, re, sys
 from subprocess import *
 
 corelist = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
-repeat = 5
+flags = ['MAP_PRIVATE', 'MAP_SHARED', 'MAP_PRIVATE|MAP_POPULATE', 'MAP_SHARED|MAP_POPULATE']
+repeat = 100 
 
 def warmup():
 	print('Warming up...')
 	for i in xrange(3):
-		p = Popen('./mmapbench 1', shell=True, stdout=PIPE)
+		p = Popen('./mmapcall 1', shell=True, stdout=PIPE)
 		os.waitpid(p.pid, 0)
 
-def test():
-	print('Begin testing...')
-	pattern = re.compile(r'usec: (\d+)')
-	for n in corelist:
-		total = 0
-		for i in xrange(repeat):
-			p = Popen('./mmapbench %d' % n, shell=True, stdout=PIPE)
-			os.waitpid(p.pid, 0)
-			output = p.stdout.read().strip()
-			usec = int(pattern.search(output).group(1))
-			total += usec
-		print('Core #%d: %d' % (n, total / repeat))
+def build(flag='MAP_PRIVATE'):
+  cmd = "make -B MMAP_FLAG='%s'" % flag
+  print cmd
+  p = Popen(cmd,shell=True)
+  os.waitpid(p.pid, 0)
 
-warmup()
-test()
+def test(base, numfiles):
+	print('Begin testing...')
+	pattern = re.compile(r'nsec: (\d+)')
+	total = 0
+	for i in xrange(repeat):
+		#print './mmapcall %s %s' % (base, numfiles)
+		p = Popen('./mmapcall %s %s' % (base, numfiles), shell=True, stdout=PIPE)
+		os.waitpid(p.pid, 0)
+		output = p.stdout.read().strip()
+		usec = int(pattern.search(output).group(1))
+		#print usec
+		total += usec
+	print('Average: %d' % ( total / repeat))
+
+#warmup()
+basepath = sys.argv[1]
+numfiles = sys.argv[2]
+
+for flag in flags:
+	print "Building.."
+	build(flag)
+	test(basepath, numfiles)
