@@ -24,6 +24,7 @@
 #include "config.h"
 #include "bench.h"
 #include "parameters.h"
+//#include "tracing.h"
 
 int nbufs = NUM_PAGES_TO_TOUCH;
 char *shared_area = NULL;
@@ -50,11 +51,14 @@ main(int argc, char **argv)
     //}
     //printf("Filename is %s \n",filename);
     //fd = open(filename, O_RDONLY);
+    //setup_trace();
     shared_area = (char *)malloc((1 + nbufs) * 4096);
     affinity_set(1);   
     start = read_tsc();
 
+    //trace_on();
     worker();
+    //trace_off();
 
     end = read_tsc();
     nsec = (end - start) * 1000 / get_cpu_freq();
