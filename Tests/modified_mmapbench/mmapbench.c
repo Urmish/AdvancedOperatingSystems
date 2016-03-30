@@ -25,18 +25,23 @@
 #include "bench.h"
 #include "parameters.h"
 
+#if (TRACE_MODE == 1)
+#include "tracing.h"
+#endif
+
 int nbufs = NUM_PAGES_TO_TOUCH;
 char *shared_area = NULL;
 char *filename = "share.dat";
 
 void worker()
 {
+    //printf("potato_test: In worker\n");
     volatile int ret = 0;
     int i;
 
     for (i = 0; i < nbufs; i++)
         ret += shared_area[i *4096];
-    //printf("potato_test: thread#%d done.\n", core);
+    //printf("potato_test: done\n");
 }
 
 int
@@ -44,7 +49,9 @@ main(int argc, char **argv)
 {
     int fd;
     uint64_t start, end, nsec;
-
+    #if (TRACE_MODE == 1)
+    setup_trace();
+    #endif
 
     if (argc > 1) {
         filename = argv[1];
@@ -55,7 +62,15 @@ main(int argc, char **argv)
     affinity_set(1);   
     start = read_tsc();
 
+    #if (TRACE_MODE == 1)
+    //printf("Setting trace on\n");
+    trace_on();
+    #endif
     worker();
+    #if (TRACE_MODE == 1)
+    //printf("Setting trace off\n");
+    trace_off();
+    #endif
 
     end = read_tsc();
     nsec = (end - start) * 1000 / get_cpu_freq();

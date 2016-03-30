@@ -19,11 +19,18 @@ def build(flag='MAP_PRIVATE'):
   p = Popen(cmd,shell=True)
   os.waitpid(p.pid, 0)
 
+def flush():
+  #print "Cache flush"
+  cmd = "free > /dev/null && sync && echo 3 > /proc/sys/vm/drop_caches && free > /dev/null"
+  p = Popen(cmd,shell=True)
+  os.waitpid(p.pid, 0)
+
 def test(base, numfiles):
 	print('Begin testing...')
 	pattern = re.compile(r'nsec: (\d+)')
 	total = 0
 	for i in xrange(repeat):
+		flush()
 		#print './mmapcall %s %s' % (base, numfiles)
 		p = Popen('./mmapcall %s %s' % (base, numfiles), shell=True, stdout=PIPE)
 		os.waitpid(p.pid, 0)

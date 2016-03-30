@@ -1,0 +1,8 @@
+*.o
+Data/*
+*.swp
+trace/*
+trace_*
+*.out
+*.log
+*.dat

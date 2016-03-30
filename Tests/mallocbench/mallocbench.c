@@ -24,7 +24,10 @@
 #include "config.h"
 #include "bench.h"
 #include "parameters.h"
-//#include "tracing.h"
+
+#if (TRACE_MODE == 1)
+#include "tracing.h"
+#endif
 
 int nbufs = NUM_PAGES_TO_TOUCH;
 char *shared_area = NULL;
@@ -51,14 +54,24 @@ main(int argc, char **argv)
     //}
     //printf("Filename is %s \n",filename);
     //fd = open(filename, O_RDONLY);
-    //setup_trace();
+
+    #if (TRACE_MODE == 1)
+    setup_trace();
+    #endif
+
     shared_area = (char *)malloc((1 + nbufs) * 4096);
     affinity_set(1);   
     start = read_tsc();
 
-    //trace_on();
+    #if (TRACE_MODE == 1)
+    trace_on();
+    #endif
+	
     worker();
-    //trace_off();
+
+    #if (TRACE_MODE == 1)
+    trace_off();
+    #endif
 
     end = read_tsc();
     nsec = (end - start) * 1000 / get_cpu_freq();

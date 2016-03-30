@@ -19,16 +19,16 @@ else
   rm -rf trace/*
 fi
 
-for k in "${available_tracers[@]}"
+for i in "${available_tracers[@]}"
 do
 	# flush existing trace data
 	echo nop > $DPATH/current_tracer
  
-	printStatement="Tracing based on following option "$k
+	printStatement="Tracing based on following option "$i
 	echo $printStatement 
 
 	# set function tracer
-	echo $k > $DPATH/current_tracer
+	echo $i > $DPATH/current_tracer
  
 	# enable the current tracer
 	#echo 1 > $DPATH/tracing_enabled
@@ -42,6 +42,6 @@ do
 	# execute the process
 	$*
 
-	cp /sys/kernel/debug/tracing/trace trace/$k\.log
+	cp /sys/kernel/debug/tracing/trace trace/$i\.log
 done
 :> $DPATH/set_ftrace_pid

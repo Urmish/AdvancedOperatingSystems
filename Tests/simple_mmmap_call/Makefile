@@ -6,11 +6,12 @@ MMAP_FLAG=MAP_PRIVATE
 CDEFINES= -DMMAP_FLAG='$(MMAP_FLAG)'
 CFLAGS+=$(CDEFINES)
 
-default: mmapcall
+default: mmapcall.out
 
-forkbench: mmapcall.o
-	$(CC) -o $@ $^ $(CFLAGS) $(CDEFINES)
+mmapcall.out: mmapcall.c
+	$(CC) -o mmapcall.out $^ $(CFLAGS) $(CDEFINES)
 
 clean:
 	rm -rf *.o
 	rm -rf mmapcall
+	rm -rf mmapcall.out
