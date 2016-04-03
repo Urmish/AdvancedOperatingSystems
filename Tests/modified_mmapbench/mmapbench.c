@@ -20,6 +20,7 @@
 #include <sys/mman.h>
 #include <stdint.h>
 #include <unistd.h>
+#include <errno.h>
 
 #include "config.h"
 #include "bench.h"
@@ -59,10 +60,10 @@ main(int argc, char **argv)
     }
     printf("Filename is %s \n",filename);
     fd = open(filename, O_RDONLY);
-    shared_area = mmap(0, (1 + nbufs) * 4096, PROT_READ, MAP_PRIVATE, fd, 0);
-    if ((int)shared_area < 0)
+    shared_area = mmap(NULL, (1 + nbufs) * 4096, PROT_READ, MAP_PRIVATE, fd, 0);
+    if (shared_area == MAP_FAILED)
     {
-	printf("mmap call was not successful, shared_area pointer value is %d\n",(int)shared_area);
+	printf("mmap call was not successful, shared_area pointer value is %d, error is %s\n",(int)shared_area,strerror(errno));
 	exit(1);
     }
     affinity_set(1);   
