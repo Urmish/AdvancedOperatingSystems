@@ -17,6 +17,7 @@ static int trace_fd;
 void setup_trace()
 {
     trace_fd = open("/sys/kernel/debug/tracing/tracing_on", O_WRONLY);
+    printf("Writing to tracing_on file \n");
     if(trace_fd < 0)
       perror("Unable to start tracing");
     setup_pf();
@@ -25,7 +26,12 @@ void setup_trace()
 void trace_on()
 {
     if(trace_fd > 0)
-        write(trace_fd, "1", 1);
+    {
+        if (write(trace_fd, "1", 1) != 1)
+	{
+		printf("[ERROR!!!!!!!!!] Write to tracing_on is not successful!\n");
+	}
+    }
     get_pf(&min_flt_cnt, &maj_flt_cnt);
 }
 
@@ -33,7 +39,12 @@ void trace_off()
 {
     end_pf_count();
     if(trace_fd > 0)
-        write(trace_fd, "0", 1);
+    {
+        if (write(trace_fd, "0", 1) != 1)
+	{
+		printf("[ERROR!!!!!!!!!] Write to tracing_off is not successful!\n");
+	}
+    }
     //close(trace_fd);
 }
 

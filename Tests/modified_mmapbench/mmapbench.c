@@ -37,7 +37,7 @@ void worker()
 {
     //printf("potato_test: In worker\n");
     volatile int ret = 0;
-    int i;
+    volatile int i;
 
     for (i = 0; i < nbufs; i++)
         ret += shared_area[i *4096];
@@ -49,6 +49,7 @@ main(int argc, char **argv)
 {
     int fd;
     uint64_t start, end, nsec;
+    printf("nbufs is %d\n",nbufs);
     #if (TRACE_MODE == 1)
     setup_trace();
     #endif
@@ -59,6 +60,11 @@ main(int argc, char **argv)
     printf("Filename is %s \n",filename);
     fd = open(filename, O_RDONLY);
     shared_area = mmap(0, (1 + nbufs) * 4096, PROT_READ, MAP_PRIVATE, fd, 0);
+    if ((int)shared_area < 0)
+    {
+	printf("mmap call was not successful, shared_area pointer value is %d\n",(int)shared_area);
+	exit(1);
+    }
     affinity_set(1);   
     start = read_tsc();
 
