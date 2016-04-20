@@ -6,10 +6,13 @@ MMAP_FLAG=MAP_PRIVATE
 CDEFINES= -DMMAP_FLAG='$(MMAP_FLAG)'
 CFLAGS+=$(CDEFINES)
 
-default: mmapcall.out
+default: mmapcall.out mmapcall_trace.out
 
 mmapcall.out: mmapcall.c
-	$(CC) -o mmapcall.out $^ $(CFLAGS) $(CDEFINES)
+	$(CC) -o mmapcall.out -DTRACE_MODE=0 $^ $(CFLAGS) $(CDEFINES)
+
+mmapcall_trace.out: mmapcall.c
+	$(CC) -o mmapcall_trace.out -DTRACE_MODE=1 $^ $(CFLAGS) $(CDEFINES)
 
 clean:
 	rm -rf *.o
