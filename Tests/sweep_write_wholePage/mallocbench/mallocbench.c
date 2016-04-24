@@ -30,19 +30,21 @@
 int nbufs = NUM_PAGES_TO_TOUCH_MF;
 char *shared_area = NULL;
 
-void worker()
+void worker(int warmUp)
 {
     int i,j;
-
+    int numTimesToRun = NUM_TIMES_TO_RUN;
     //printf("potato_test: thread#%d done.\n", core); 
+    if (warmUp == 1)
+	numTimesToRun=1;
     #if (TRACE_MODE == 1)
     trace_on();
     #endif
-    for (j=0; j<NUM_TIMES_TO_RUN;j++)
+    for (j=0; j<numTimesToRun;j++)
     {
-    	for (i = 0; i < nbufs; i++)
+    	for (i = 0; i < nbufs*4096; i++)
         //	ret += shared_area[i *4096];
-        	shared_area[i *4096] = '1';
+        	shared_area[i] = '1';
     }
 
     #if (TRACE_MODE == 1)
@@ -70,18 +72,21 @@ main(int argc, char **argv)
     shared_area = (char *)malloc((1 + nbufs) * 4096);
     affinity_set(1);   
 
+    worker(1);
 
     start = read_tsc();
     setup_pf();
     start_pf_count();
+
 	
-    worker();
+    worker(0);
 
 
     end = read_tsc();
     nsec = (end - start) * 1000000 / get_cpu_freq();
     //printf("nsec: %ld\t\n", nsec/(NUM_TIMES_TO_RUN+1));
     printf("nsec: %ld\t\n", nsec/(NUM_TIMES_TO_RUN));
+
     end_pf_count();
     //close(fd);
     return 0;

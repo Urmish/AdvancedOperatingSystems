@@ -32,22 +32,16 @@ char *shared_area = NULL;
 
 void worker()
 {
+    volatile int ret = 0;
     int i,j;
 
     //printf("potato_test: thread#%d done.\n", core); 
-    #if (TRACE_MODE == 1)
-    trace_on();
-    #endif
     for (j=0; j<NUM_TIMES_TO_RUN;j++)
     {
-    	for (i = 0; i < nbufs; i++)
-        //	ret += shared_area[i *4096];
-        	shared_area[i *4096] = '1';
+    	for (i = 0; i < nbufs*4096; i++)
+        	ret += shared_area[i];
     }
 
-    #if (TRACE_MODE == 1)
-    trace_off();
-    #endif
 
 }
 
@@ -71,17 +65,27 @@ main(int argc, char **argv)
     affinity_set(1);   
 
 
+ //   worker();
+
     start = read_tsc();
     setup_pf();
     start_pf_count();
+
+    #if (TRACE_MODE == 1)
+    trace_on();
+    #endif
 	
     worker();
 
+    #if (TRACE_MODE == 1)
+    trace_off();
+    #endif
 
     end = read_tsc();
     nsec = (end - start) * 1000000 / get_cpu_freq();
     //printf("nsec: %ld\t\n", nsec/(NUM_TIMES_TO_RUN+1));
     printf("nsec: %ld\t\n", nsec/(NUM_TIMES_TO_RUN));
+
     end_pf_count();
     //close(fd);
     return 0;

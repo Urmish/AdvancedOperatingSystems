@@ -26,9 +26,7 @@
 #include "bench.h"
 #include "parameters.h"
 
-#if (TRACE_MODE == 1)
 #include "tracing.h"
-#endif
 
 int nbufs = NUM_PAGES_TO_TOUCH_MF;
 char *shared_area = NULL;
@@ -66,12 +64,14 @@ main(int argc, char **argv)
     shared_area = mmap(NULL, (1 + nbufs) * 4096, PROT_READ, MAP_PRIVATE, fd, 0);
     if (shared_area == MAP_FAILED)
     {
-	printf("mmap call was not successful, shared_area pointer value is %d, error is %s\n",(int)shared_area,strerror(errno));
+	printf("mmap call was not successful, shared_area pointer value is %p, error is %s\n",(void *)shared_area,strerror(errno));
 	exit(1);
     }
     affinity_set(1);   
     start = read_tsc();
 
+    setup_pf();
+    start_pf_count();
     #if (TRACE_MODE == 1)
     //printf("Setting trace on\n");
     trace_on();
@@ -84,8 +84,9 @@ main(int argc, char **argv)
 
     end = read_tsc();
     nsec = (end - start) * 1000000 / get_cpu_freq();
-    printf("nsec: %ld\t\n", nsec/(NUM_TIMES_TO_RUN+1));
-
+    //printf("nsec: %ld\t\n", nsec/(NUM_TIMES_TO_RUN+1));
+    printf("nsec: %ld\t\n", nsec/(NUM_TIMES_TO_RUN));
+    end_pf_count();
     close(fd);
     return 0;
 }

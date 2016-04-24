@@ -1,7 +1,7 @@
 CC=gcc
 CFLAGS=-O2 -Wall -pthread -I ../../../Tests/Tests/include
-NUM_PAGES_TO_TOUCH_MF=16768
-NUM_TIMES_TO_RUN=100000
+NUM_PAGES_TO_TOUCH_MF=128000
+NUM_TIMES_TO_RUN=1000
 
 default: mmapbench.out
 

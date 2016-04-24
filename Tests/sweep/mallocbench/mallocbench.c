@@ -25,9 +25,7 @@
 #include "bench.h"
 #include "parameters.h"
 
-#if (TRACE_MODE == 1)
 #include "tracing.h"
-#endif
 
 int nbufs = NUM_PAGES_TO_TOUCH_MF;
 char *shared_area = NULL;
@@ -37,7 +35,6 @@ void worker()
     volatile int ret = 0;
     int i,j;
 
-    //printf("potato_test: thread#%d done.\n", core); 
     #if (TRACE_MODE == 1)
     trace_on();
     #endif
@@ -74,15 +71,17 @@ main(int argc, char **argv)
 
 
     start = read_tsc();
-
+    setup_pf();
+    start_pf_count();
 	
     worker();
 
 
     end = read_tsc();
     nsec = (end - start) * 1000000 / get_cpu_freq();
-    printf("nsec: %ld\t\n", nsec/(NUM_TIMES_TO_RUN+1));
-
+    //printf("nsec: %ld\t\n", nsec/(NUM_TIMES_TO_RUN+1));
+    printf("nsec: %ld\t\n", nsec/(NUM_TIMES_TO_RUN));
+    end_pf_count();
     //close(fd);
     return 0;
 }

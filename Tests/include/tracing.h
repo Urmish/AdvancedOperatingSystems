@@ -20,7 +20,7 @@ void setup_trace()
     printf("Writing to tracing_on file \n");
     if(trace_fd < 0)
       perror("Unable to start tracing");
-    setup_pf();
+ //   setup_pf();
 }
 
 void trace_on()
@@ -32,7 +32,7 @@ void trace_on()
 		printf("[ERROR!!!!!!!!!] Write to tracing_on is not successful!\n");
 	}
     }
-    get_pf(&min_flt_cnt, &maj_flt_cnt);
+    //get_pf(&min_flt_cnt, &maj_flt_cnt);
 }
 
 void trace_off()
@@ -77,7 +77,7 @@ void get_pf(unsigned long *min_flt, unsigned long *maj_flt)
     char line[200];
 
     // get line
-    if( fgets(line, sizeof(line), procf) < 0) {
+    if( fgets(line, sizeof(line), procf) == NULL) {
         printf("Error reading proc file\n");
         return;
     }
@@ -96,6 +96,10 @@ void get_pf(unsigned long *min_flt, unsigned long *maj_flt)
     fclose(procf);
 }
 
+void start_pf_count()
+{
+    get_pf(&min_flt_cnt, &maj_flt_cnt);
+}
 /*-- dumps pf count difference between last trace point and now */
 void end_pf_count()
 {

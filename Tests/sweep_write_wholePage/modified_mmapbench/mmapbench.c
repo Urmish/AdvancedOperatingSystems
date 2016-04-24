@@ -33,15 +33,18 @@ char *shared_area = NULL;
 char *filename = "share.dat";
 int loopIter = NUM_TIMES_TO_RUN;
 
-void worker()
+void worker(int warmUp)
 {
     //printf("potato_test: In worker\n");
     volatile int i,j;	
-    for (j=0; j<NUM_TIMES_TO_RUN;j++)
+    int numTimesToRun = NUM_TIMES_TO_RUN;
+    if (warmUp == 1)
+	numTimesToRun=1;
+    for (j=0; j<numTimesToRun;j++)
     {
-    	for (i = 0; i < nbufs; i++)
+    	for (i = 0; i < nbufs*4096; i++)
         	//ret += shared_area[i *4096];
-        	shared_area[i *4096] = '1';
+        	shared_area[i] = '1';
     }
     //printf("potato_test: done\n");
 }
@@ -68,15 +71,18 @@ main(int argc, char **argv)
 	    exit(1);
     }
     affinity_set(1);   
-    start = read_tsc();
 
+    //worker(1);
+
+    start = read_tsc();
     setup_pf();
     start_pf_count();
+
     #if (TRACE_MODE == 1)
     //printf("Setting trace on\n");
     trace_on();
     #endif
-    worker();
+    worker(0);
     #if (TRACE_MODE == 1)
     //printf("Setting trace off\n");
     trace_off();
