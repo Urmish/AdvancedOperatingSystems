@@ -1,0 +1,13 @@
+./combine.py Results_Apr25_2017/sweep_mmapbench_1.csv Results_Apr25_2017/sweep_malloc_1.csv CombineResults/read_singleByte_numIter1.csv
+./combine.py Results_Apr25_2017/sweep_mmapbench_10000.csv Results_Apr25_2017/sweep_malloc_10000.csv CombineResults/read_singleByte_numIter10000.csv
+
+./combine.py Results_Apr25_2017/sweep_write_mmapbench_1.csv Results_Apr25_2017/sweep_write_malloc_1.csv CombineResults/write_singleByte_numIter1.csv
+./combine.py Results_Apr25_2017/sweep_write_mmapbench_10000.csv Results_Apr25_2017/sweep_write_malloc_10000.csv CombineResults/write_singleByte_numIter10000.csv
+
+./combine.py Results_Apr25_2017/sweep_read_wholePage_mmapbench_1.csv Results_Apr25_2017/sweep_read_wholePage_malloc_1.csv CombineResults/read_wholePage_numIter1.csv
+./combine.py Results_Apr25_2017/sweep_read_wholePage_mmapbench_1000.csv Results_Apr25_2017/sweep_read_wholePage_malloc_1000.csv CombineResults/read_wholePage_numIter1000.csv
+
+./combine.py Results_Apr25_2017/sweep_write_wholePage_mmapbench_1.csv Results_Apr25_2017/sweep_write_wholePage_malloc_1.csv CombineResults/write_wholePage_numIter1.csv
+./combine.py Results_Apr25_2017/sweep_write_wholePage_mmapbench_1000.csv Results_Apr25_2017/sweep_write_wholePage_malloc_1000.csv CombineResults/write_wholePage_numIter1000.csv
+
+

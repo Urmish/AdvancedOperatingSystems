@@ -1,0 +1,131 @@
+
+Time
+Prefetched Pages,0,4,16,64,256,512
+pmfs,122499,41016,27884,25458,22009,23013
+
+MajorPageFaults
+Prefetched Pages,0,4,16,64,256,512
+pmfs,1,1,1,1,1,1
+
+MinorPageFaultsnPrefetched Pages,0,4,16,64,256,512
+pmfs,128022,25622,7552,1992,521,272
+
+cache-references
+Prefetched Pages,0,4,16,64,256,512
+pmfs,10535,10228,10639,10486,13524,10498
+
+cache-misses
+Prefetched Pages,0,4,16,64,256,512
+pmfs,1058,1188,1322,1164,1063,1313
+
+L1-dcache-loads
+Prefetched Pages,0,4,16,64,256,512
+pmfs,121961,121431,121122,121052,129328,124133
+
+L1-dcache-load-misses
+Prefetched Pages,0,4,16,64,256,512
+pmfs,11109,10942,11069,10825,12053,10899
+
+L1-dcache-stores
+Prefetched Pages,0,4,16,64,256,512
+pmfs,0,0,0,0,0,0
+
+L1-dcache-store-misses
+Prefetched Pages,0,4,16,64,256,512
+pmfs,0,0,0,0,0,0
+
+L1-dcache-prefetches
+Prefetched Pages,0,4,16,64,256,512
+pmfs,0,0,0,0,0,0
+
+L1-dcache-prefetch-misses
+Prefetched Pages,0,4,16,64,256,512
+pmfs,0,0,0,0,0,0
+
+L1-icache-loads
+Prefetched Pages,0,4,16,64,256,512
+pmfs,0,0,0,0,0,0
+
+L1-icache-load-misses
+Prefetched Pages,0,4,16,64,256,512
+pmfs,0,0,0,0,0,0
+
+LLC-loads
+Prefetched Pages,0,4,16,64,256,512
+pmfs,0,0,0,0,0,0
+
+LLC-load-misses
+Prefetched Pages,0,4,16,64,256,512
+pmfs,0,0,0,0,0,0
+
+LLC-stores
+Prefetched Pages,0,4,16,64,256,512
+pmfs,0,0,0,0,0,0
+
+LLC-store-misses
+Prefetched Pages,0,4,16,64,256,512
+pmfs,0,0,0,0,0,0
+
+LLC-prefetches
+Prefetched Pages,0,4,16,64,256,512
+pmfs,0,0,0,0,0,0
+
+LLC-prefetch-misses
+Prefetched Pages,0,4,16,64,256,512
+pmfs,0,0,0,0,0,0
+
+dTLB-loads
+Prefetched Pages,0,4,16,64,256,512
+pmfs,0,0,0,0,0,0
+
+dTLB-load-misses
+Prefetched Pages,0,4,16,64,256,512
+pmfs,0,0,0,0,0,0
+
+dTLB-stores
+Prefetched Pages,0,4,16,64,256,512
+pmfs,0,0,0,0,0,0
+
+dTLB-store-misses
+Prefetched Pages,0,4,16,64,256,512
+pmfs,0,0,0,0,0,0
+
+iTLB-loads
+Prefetched Pages,0,4,16,64,256,512
+pmfs,0,0,0,0,0,0
+
+iTLB-load-misses
+Prefetched Pages,0,4,16,64,256,512
+pmfs,0,0,0,0,0,0
+
+L1-dcache-load Hit Ratio
+Prefetched Pages,0,4,16,64,256,512
+pmfs,0.908913505137,0.90989121394,0.908612803619,0.910575620395,0.90680285785,0.91219901235
+
+L1-dcache-store Hit Ratio
+Prefetched Pages,0,4,16,64,256,512
+pmfs,NA,NA,NA,NA,NA,NA
+
+L1-icache-load Hit Ratio
+Prefetched Pages,0,4,16,64,256,512
+pmfs,NA,NA,NA,NA,NA,NA
+
+LLC-load Hit Ratio
+Prefetched Pages,0,4,16,64,256,512
+pmfs,NA,NA,NA,NA,NA,NA
+
+LLC-store Hit Ratio
+Prefetched Pages,0,4,16,64,256,512
+pmfs,NA,NA,NA,NA,NA,NA
+
+dTLB-load Hit Ratio
+Prefetched Pages,0,4,16,64,256,512
+pmfs,NA,NA,NA,NA,NA,NA
+
+dTLB-store Hit Ratio
+Prefetched Pages,0,4,16,64,256,512
+pmfs,NA,NA,NA,NA,NA,NA
+
+iTLB-load Hit Ratio
+Prefetched Pages,0,4,16,64,256,512
+pmfs,NA,NA,NA,NA,NA,NA
