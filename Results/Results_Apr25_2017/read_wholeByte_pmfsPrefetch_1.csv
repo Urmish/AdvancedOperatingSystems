@@ -1,131 +1,164 @@
 
 Time
 Prefetched Pages,0,4,16,64,256,512
+malloc,
 pmfs,2547011,2482988,2478521,2464464,2460734,2461565
 
 MajorPageFaults
 Prefetched Pages,0,4,16,64,256,512
+malloc,
 pmfs,1,1,1,1,1,1
 
 MinorPageFaultsnPrefetched Pages,0,4,16,64,256,512
+malloc,
 pmfs,128022,25622,7552,1992,521,272
 
 cache-references
 Prefetched Pages,0,4,16,64,256,512
+malloc,
 pmfs,10744,10201,10487,11362,10567,10550
 
 cache-misses
 Prefetched Pages,0,4,16,64,256,512
+malloc,
 pmfs,1167,1264,1236,1209,1102,1252
 
 L1-dcache-loads
 Prefetched Pages,0,4,16,64,256,512
+malloc,
 pmfs,123871,120751,122032,122718,121017,121056
 
 L1-dcache-load-misses
 Prefetched Pages,0,4,16,64,256,512
+malloc,
 pmfs,10971,10904,11126,11273,10925,10987
 
 L1-dcache-stores
 Prefetched Pages,0,4,16,64,256,512
+malloc,
 pmfs,0,0,0,0,0,0
 
 L1-dcache-store-misses
 Prefetched Pages,0,4,16,64,256,512
+malloc,
 pmfs,0,0,0,0,0,0
 
 L1-dcache-prefetches
 Prefetched Pages,0,4,16,64,256,512
+malloc,
 pmfs,0,0,0,0,0,0
 
 L1-dcache-prefetch-misses
 Prefetched Pages,0,4,16,64,256,512
+malloc,
 pmfs,0,0,0,0,0,0
 
 L1-icache-loads
 Prefetched Pages,0,4,16,64,256,512
+malloc,
 pmfs,0,0,0,0,0,0
 
 L1-icache-load-misses
 Prefetched Pages,0,4,16,64,256,512
+malloc,
 pmfs,0,0,0,0,0,0
 
 LLC-loads
 Prefetched Pages,0,4,16,64,256,512
+malloc,
 pmfs,0,0,0,0,0,0
 
 LLC-load-misses
 Prefetched Pages,0,4,16,64,256,512
+malloc,
 pmfs,0,0,0,0,0,0
 
 LLC-stores
 Prefetched Pages,0,4,16,64,256,512
+malloc,
 pmfs,0,0,0,0,0,0
 
 LLC-store-misses
 Prefetched Pages,0,4,16,64,256,512
+malloc,
 pmfs,0,0,0,0,0,0
 
 LLC-prefetches
 Prefetched Pages,0,4,16,64,256,512
+malloc,
 pmfs,0,0,0,0,0,0
 
 LLC-prefetch-misses
 Prefetched Pages,0,4,16,64,256,512
+malloc,
 pmfs,0,0,0,0,0,0
 
 dTLB-loads
 Prefetched Pages,0,4,16,64,256,512
+malloc,
 pmfs,0,0,0,0,0,0
 
 dTLB-load-misses
 Prefetched Pages,0,4,16,64,256,512
+malloc,
 pmfs,0,0,0,0,0,0
 
 dTLB-stores
 Prefetched Pages,0,4,16,64,256,512
+malloc,
 pmfs,0,0,0,0,0,0
 
 dTLB-store-misses
 Prefetched Pages,0,4,16,64,256,512
+malloc,
 pmfs,0,0,0,0,0,0
 
 iTLB-loads
 Prefetched Pages,0,4,16,64,256,512
+malloc,
 pmfs,0,0,0,0,0,0
 
 iTLB-load-misses
 Prefetched Pages,0,4,16,64,256,512
+malloc,
 pmfs,0,0,0,0,0,0
 
 L1-dcache-load Hit Ratio
 Prefetched Pages,0,4,16,64,256,512
+malloc,
 pmfs,0.911432054315,0.909698470406,0.908827192867,0.908138985316,0.909723427287,0.909240351573
 
 L1-dcache-store Hit Ratio
 Prefetched Pages,0,4,16,64,256,512
+malloc,
 pmfs,NA,NA,NA,NA,NA,NA
 
 L1-icache-load Hit Ratio
 Prefetched Pages,0,4,16,64,256,512
+malloc,
 pmfs,NA,NA,NA,NA,NA,NA
 
 LLC-load Hit Ratio
 Prefetched Pages,0,4,16,64,256,512
+malloc,
 pmfs,NA,NA,NA,NA,NA,NA
 
 LLC-store Hit Ratio
 Prefetched Pages,0,4,16,64,256,512
+malloc,
 pmfs,NA,NA,NA,NA,NA,NA
 
 dTLB-load Hit Ratio
 Prefetched Pages,0,4,16,64,256,512
+malloc,
 pmfs,NA,NA,NA,NA,NA,NA
 
 dTLB-store Hit Ratio
 Prefetched Pages,0,4,16,64,256,512
+malloc,
 pmfs,NA,NA,NA,NA,NA,NA
 
 iTLB-load Hit Ratio
 Prefetched Pages,0,4,16,64,256,512
+malloc,
 pmfs,NA,NA,NA,NA,NA,NA
