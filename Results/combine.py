@@ -21,6 +21,10 @@ for line in mallocfile:
 print "Number of Malloc Entries Found Are "+str(len(mallocValues))
 count=0
 for line in mmapfile:
+  if (re.search("MinorPageFaultsnPages",line)):
+    outputfile.write("MinorPageFaults\n")
+    line = line.replace("MinorPageFaultsnPages","Pages")
+    outputfile.write(line)
   if (re.search("malloc",line)):
     outputfile.write(mallocValues[count])
     count=count+1
